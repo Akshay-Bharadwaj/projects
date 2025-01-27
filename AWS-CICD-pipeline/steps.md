@@ -9,4 +9,4 @@
 - Create deployment (give GitHub repo and commit id)
 - Run the deployment. It will fail because, it didn't find the necessary files. So, create them in the root directory or repo
 - Add build stage, provide deployment group and also CodeDeploy as action provider
-- 
+- If any changes made in the github, then CodeCommit will pull the changes and trigger the Code
