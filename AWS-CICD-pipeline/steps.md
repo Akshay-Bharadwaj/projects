@@ -1,0 +1,7 @@
+- In AWS console, create application in CodeDeploy
+- Launch EC2 with ssh 22 inbound rule
+- Create an IAM role for CodeDeploy
+- Connect to instance and install CodeDeploy
+- Create deployment group
+- Attach ec2full access policy to the role
+- Create deployment (give GitHub repo and commit id)
