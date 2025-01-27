@@ -1,3 +1,5 @@
+- Create python flask app and containarize it
+- Push it to the docker hub
 - In AWS console, create application in CodeDeploy
 - Launch EC2 with ssh 22 inbound rule
 - Create an IAM role for CodeDeploy
@@ -5,3 +7,6 @@
 - Create deployment group
 - Attach ec2full access policy to the role
 - Create deployment (give GitHub repo and commit id)
+- Run the deployment. It will fail because, it didn't find the necessary files. So, create them in the root directory or repo
+- Add build stage, provide deployment group and also CodeDeploy as action provider
+- 
