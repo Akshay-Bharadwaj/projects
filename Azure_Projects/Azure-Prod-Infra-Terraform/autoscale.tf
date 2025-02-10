@@ -41,7 +41,7 @@ resource "azurerm_monitor_autoscale_setting" "autoscale" {
         time_aggregation = "Average"
         time_window = "PT2M"
         time_grain = "PT1M"
-        threshold = 10
+        threshold = 90
       }
       scale_action {
         direction = "Increase"
