@@ -6,13 +6,6 @@ Currently, I have implemented the basic UI with media details fetch functionalit
 
 Deployed it using vercel [here](https://nextflix-azure.vercel.app/).
 
-Please leave a ⭐ as motivation if you liked the implementation 😄
-
-
-## Demo
-![Demo](/public/assets/demo.gif)
-<br />
-<br />
 
 ## Built with
 * [Next.js](https://nextjs.org/)
@@ -30,5 +23,8 @@ In the project directory, you can run:
 
 It runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 
+
+
+PS: Thanks to the developer of this amazing clone of Netflix app who shared the metadata for open source contributions :)
 
 
