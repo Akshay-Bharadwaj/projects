@@ -1,4 +1,4 @@
-# Deploying a Netflix Clone on Kubernetes using DevSecOps methodology
+# Deploying a Netflix Clone on K8S using DevSecOps
 
 In this project we would be deploying Netflix Clone application on an EKS cluster using DevSecOps methodology. We would be making use of security tools like SonarQube, OWASP Dependency Check and Trivy.
 We would also be monitoring our EKS cluster using monitoring tools like Prometheus and Grafana. Most importantly we will be using ArgoCD for the Deployment.
@@ -51,7 +51,7 @@ Add URL of SonarQube and for the credential select the one added in step 2.
 
 Go to Dashboard -> New Item -> Pipeline 
 
-Use the code below for the Jenkins pipeline. 
+Pipeline Script: 
 
 ```bash
 pipeline {
