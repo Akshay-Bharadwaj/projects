@@ -1,3 +1,5 @@
+#security group for allow/deny traffic at specific ports
+
 module "sg" {
   source = "terraform-aws-modules/security-group/aws"
 
@@ -54,6 +56,8 @@ module "sg" {
   ]
 }
 
+#single instance to manage jenkins, sonarqube and trivy
+
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
@@ -78,6 +82,8 @@ module "ec2_instance" {
     Name        = "netflix-server"
   }
 }
+
+#attaching an elastic ip address
 
 resource "aws_eip" "eip" {
   instance = module.ec2_instance.id
