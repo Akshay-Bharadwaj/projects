@@ -1,31 +1,31 @@
-#security group for allow/deny traffic at specific ports
+# security group
 
 module "sg" {
   source = "terraform-aws-modules/security-group/aws"
 
-  name        = "netflix-sg"
-  description = "Security group for netflix clone server"
+  name        = "movieapp-sg"
+  description = "Security group for server"
   vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
     {
-      from_port   = 8080
-      to_port     = 8080
-      protocol    = "tcp"
-      description = "Jenkins port"
-      cidr_blocks = "0.0.0.0/0"
+        from_port = 8080
+        to_port = 8080
+        protocol = "TCP"
+        description = "Jenkins server"
+        cidr_blocks = "0.0.0.0/0"
     },
     {
       from_port   = 443
       to_port     = 443
-      protocol    = "tcp"
+      protocol    = "TCP"
       description = "HTTPS"
       cidr_blocks = "0.0.0.0/0"
     },
     {
       from_port   = 80
       to_port     = 80
-      protocol    = "tcp"
+      protocol    = "TCP"
       description = "HTTP"
       cidr_blocks = "0.0.0.0/0"
     },
@@ -47,11 +47,11 @@ module "sg" {
 
   egress_with_cidr_blocks = [
     {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      description = "All traffic"
-      cidr_blocks = "0.0.0.0/0"
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        description = "All traffic"
+        cidr_blocks = "0.0.0.0/0"
     }
   ]
 }
@@ -61,7 +61,7 @@ module "sg" {
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "netflix-server"
+  name = "movieapp-server"
 
   instance_type          = var.instance_type
   ami                    = var.ami
@@ -69,7 +69,8 @@ module "ec2_instance" {
   monitoring             = true
   vpc_security_group_ids = [module.sg.security_group_id]
   subnet_id              = var.subnet_id
-  user_data              = file("userdata.sh")
+  user_data              = file("user-data.sh")
+
   root_block_device = [
     { volume_size = 25
       volume_type = "gp3"
@@ -77,15 +78,20 @@ module "ec2_instance" {
   ]
 
   tags = {
-    Terraform   = "true"
     Environment = "dev"
-    Name        = "netflix-server"
+    Name        = "movieapp-server"
   }
+
+  
 }
 
-#attaching an elastic ip address
-
+#attaching an elastic ip address for the instance
 resource "aws_eip" "eip" {
   instance = module.ec2_instance.id
   domain   = "vpc"
+}
+
+#displaying the eip
+output "eip" {
+  value = aws_eip.eip.public_ip
 }
