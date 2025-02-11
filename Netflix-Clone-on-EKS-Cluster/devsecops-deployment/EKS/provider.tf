@@ -1,6 +1,6 @@
-#EKS cluster to manage and orchestrate the deployments
+#provider configurations
 
-locals {
+local {
   region = "ap-south-1"
   name   = "netflix-cluster"
   vpc_cidr = "10.123.0.0/16"
