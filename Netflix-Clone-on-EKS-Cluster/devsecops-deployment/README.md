@@ -1,15 +1,24 @@
-# Deploying a Netflix Clone on K8S using DevSecOps
+# Movie App 
+A simple dynamic web app built using javascript
 
-In this project we would be deploying Netflix Clone application on an EKS cluster using DevSecOps methodology. We would be making use of security tools like SonarQube, OWASP Dependency Check and Trivy.
+* [TMDB API](https://www.themoviedb.org/)
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 
+
+
+
+# Deploying a Movie app on K8S using DevSecOps
+
+In this project we would be deploying an application on an EKS cluster using DevSecOps methodology. We would be making use of security tools like SonarQube, OWASP Dependency Check and Trivy.
 We would also be monitoring our EKS cluster using monitoring tools like Prometheus and Grafana. Most importantly we will be using ArgoCD for the Deployment.
 
-## Step 1: Launch an EC2 Instance and install Jenkins, SonarQube, Docker and Trivy
+## Step 1: Launched an EC2 Instance and install Jenkins, SonarQube, Docker and Trivy
 
-We would be making use of Terraform to launch the EC2 instance. We would be adding a script as userdata for the installation of Jenkins, SonarQube, Trivy and Docker. 
+Terraform is used to launch the EC2 instance. We would be adding a script as userdata for the installation of Jenkins, SonarQube, Trivy and Docker. 
 
 ## Step 2: Access Jenkins at port 8080 and install required plugins
 
-Install the following plugins:
+Plugins installed:
 
 1. NodeJS 
 2. Eclipse Temurin Installer
@@ -23,7 +32,7 @@ Install the following plugins:
 
 ## Step 3: Set up SonarQube
 
-For the SonarQube Configuration, first access the Sonarqube Dashboard using the url http://elastic_ip:9000
+For the SonarQube Configuration, first access the Sonarqube Dashboard using the url http://{eip}:9000
 
 1. Create the token 
 Administration -> Security -> Users -> Create a token 
@@ -199,12 +208,3 @@ kubectl get svc argocd-server -n argocd -o json
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
-
-
-
-
-
-
-
-
-
